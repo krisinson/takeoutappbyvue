@@ -111,6 +111,11 @@
         <i class="iconfont icon-jiantou2"></i>
       </span>
     </div>
+    <div class="languages">
+      <mt-button type="primary" @click="$i18n.locale= 'Chinese'">中文</mt-button>
+      <mt-button type="primary" @click="$i18n.locale= 'English'">英文</mt-button>
+      <mt-button type="primary" @click="$i18n.locale= 'Japanese'">日文</mt-button>
+    </div>
   </div>
 </template>
 
@@ -388,4 +393,8 @@ export default {
     }
   }
 }
+  .languages
+    margin-top 50px
+    display flex
+    justify-content space-around
 </style>

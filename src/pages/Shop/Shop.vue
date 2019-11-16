@@ -17,11 +17,41 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { mapState } from 'vuex'
   import ShopHeader from '../../components/ShopHeader/ShopHeader'
+  import {SAVE_SHOPDATAS ,SAVE_SHOPSCART} from '../../store/mutation-types'
   export default {
     components:{ ShopHeader },
+    computed:{
+      ...mapState({
+        shopDatas: state => state.shop.shopDatas,
+        shopsCart: state => state.shop.shopsCart
+      })
+    },
     mounted(){
-      this.$store.dispatch('getShopDatasAction')
+      // 读取sessionStorage中是否有之前存储的数据
+      if(sessionStorage.getItem('shopDatas')){
+        // 之前有值
+        let shopDatas = JSON.parse(sessionStorage.getItem('shopDatas'))
+        let shopsCart = shopDatas.goods.reduce((pre, good) => {
+          pre.push(...good.foods.filter(food => food.count))
+          return pre
+        }, [])
+       //将获取的值存入store中
+       this.$store.commit(SAVE_SHOPDATAS,{shopDatas})
+       this.$store.commit(SAVE_SHOPSCART,{shopsCart})
+      }else{
+        // 之前没有值
+        this.$store.dispatch('getShopDatasAction')
+      }
+      window.addEventListener('beforeunload',()=>{
+         sessionStorage.setItem('shopDatas',JSON.stringify(this.shopDatas))
+        //  sessionStorage.setItem('shopsCart',JSON.stringify(this.shopsCart))
+      })
+    },
+    
+    beforeDestroy(){
+      sessionStorage.setItem('shopDatas',JSON.stringify(this.shopDatas))
     }
   }
 </script>

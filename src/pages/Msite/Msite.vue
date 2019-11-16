@@ -63,7 +63,7 @@ import Shops from '../../components/Shops/Shops'
      },
      methods:{
        _chunk(target,size){
-         if(!Array.isArray(target)|| size<=0||!!!target.length) return
+         if(!Array.isArray(target)|| size<=0||!target.length) return
          let arr=[...target]
          let result =[]
          while(arr.length>size){

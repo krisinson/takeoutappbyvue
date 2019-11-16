@@ -3,6 +3,7 @@ import VeeValidate from 'vee-validate'
 import zh_CN from 'vee-validate/dist/locale/zh_CN'
 
 Vue.use(VeeValidate)
+
 // 自定义验证规则
 VeeValidate.Validator.extend('mobile', {
   validate: value => {

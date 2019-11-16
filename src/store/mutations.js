@@ -7,7 +7,8 @@ import {
     SAVE_SHOPS,
     SAVE_TOKEN,
     SAVE_USER,
-    LOGOUT
+    LOGOUT,
+ 
 } from './mutation-types'
 export default {
     [SAVE_ADDRESS](state, { address }) {
@@ -31,4 +32,6 @@ export default {
         state.token = ''
         localStorage.removeItem('token_key')
     },
+   
+
 }

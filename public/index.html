@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0 user-scalable=no">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
   <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1500022_a7i1jccmy3h.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1500022_nfd2sw4cas.css">
   <title>myvue-project</title>
 </head>
 
 <body>
   <div id="app"></div>
   <!-- built files will be auto injected -->
+  <script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
   <script>
     // function remRefresh() {
     //   // 1.获取屏幕宽度
@@ -37,6 +39,12 @@
     //     remRefresh()
     //   }, 2000);
     // })
+
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function () {
+        FastClick.attach(document.body);
+      }, false);
+    }
   </script>
 </body>
 
